@@ -1,0 +1,25 @@
+{{ if ne .chezmoi.os "darwin" }}
+**/os.darwin/**
+**/*os.darwin*/**
+{{ end }}
+
+{{ if ne .chezmoi.os "linux" }}
+**/os.linux/**
+**/*os.linux*/**
+{{ end }}
+
+{{ if ne .chezmoi.os "windows" }}
+**/os.windows/**
+**/*os.windows*/**
+{{ end }}
+
+{{ if ne .features.wsl true }}
+**/feature.wsl/**
+**/*feature.wsl*/**
+{{ end }}
+
+{{ if ne .features.pets true }}
+**/feature.pets/**
+**/*feature.pets*/**
+.pets
+{{ end }}

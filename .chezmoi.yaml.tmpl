@@ -1,0 +1,20 @@
+{{- $features := dict -}}
+{{- $_ := set $features "wsl" false -}}
+{{- $_ := set $features "pets" false -}}
+
+{{- if (.chezmoi.kernel.osrelease | regexMatch "-microsoft-standard") -}}
+{{-   $_ := set $features "wsl" true -}}
+{{- end -}}
+
+{{- if eq .chezmoi.hostname "server1" -}}
+{{-   $_ := set $features "pets" true -}}
+{{- end -}}
+
+data:
+  features:
+    wsl: {{ $features.wsl }}
+    pets: {{ $features.pets }}
+
+diff:
+  exclude: 
+    - 'scripts' 
